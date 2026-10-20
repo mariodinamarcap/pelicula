@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { ListaPeliculas } from "./componentes/ListaPeliculas"
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
 
         setPeliculas(datos.Search)
       } catch (err) {
-        console.log(err.message)
         setMensajeError(err.message)
       } finally {
         setEstaEsperando(false)
@@ -31,7 +31,17 @@ function App() {
   }, [])
 
   return (
-    <h1 className="text-3xl font-bold text-blue-500">🎬 Mi cine</h1>
+    <main>
+      <h1 className="text-3xl font-bold text-blue-500">🎬 Mi cine</h1>
+
+      {estaEsperando ? (
+        <p>Buscando...</p>
+      ) : mensajeError ? (
+        <p>{mensajeError}</p>
+      ) : (
+        <ListaPeliculas peliculas={peliculas} />
+      )}
+    </main>
   )
 }
 
