@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { ListaPeliculas } from "./componentes/ListaPeliculas"
-import { Buscador } from "./componentes/Buscador"
+import { Inicio } from "./paginas/Inicio"
 
 function App() {
 
@@ -28,23 +27,14 @@ function App() {
   }
 
   return (
-    <main>
-      <h1 className="text-3xl font-bold text-blue-500">🎬 Mi cine</h1>
-
-      <Buscador
-        peliculaEscrita={peliculaEscrita}
-        setPeliculaEscrita={setPeliculaEscrita}
-        buscarPeliculas={buscarPeliculas}
-      />
-
-      {estaEsperando ? (
-        <p>Buscando...</p>
-      ) : mensajeError ? (
-        <p>{mensajeError}</p>
-      ) : (
-        <ListaPeliculas peliculas={peliculas} />
-      )}
-    </main>
+    <Inicio
+      peliculaEscrita={peliculaEscrita}
+      setPeliculaEscrita={setPeliculaEscrita}
+      buscarPeliculas={buscarPeliculas}
+      estaEsperando={estaEsperando}
+      mensajeError={mensajeError}
+      peliculas={peliculas}
+    />
   )
 }
 
