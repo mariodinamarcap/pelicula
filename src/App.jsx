@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { Routes, Route } from "react-router"
 import { Inicio } from "./paginas/Inicio"
+import { Detalle } from "./paginas/Detalle"
 
 function App() {
 
@@ -27,14 +29,22 @@ function App() {
   }
 
   return (
-    <Inicio
-      peliculaEscrita={peliculaEscrita}
-      setPeliculaEscrita={setPeliculaEscrita}
-      buscarPeliculas={buscarPeliculas}
-      estaEsperando={estaEsperando}
-      mensajeError={mensajeError}
-      peliculas={peliculas}
-    />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Inicio
+            peliculaEscrita={peliculaEscrita}
+            setPeliculaEscrita={setPeliculaEscrita}
+            buscarPeliculas={buscarPeliculas}
+            estaEsperando={estaEsperando}
+            mensajeError={mensajeError}
+            peliculas={peliculas}
+          />
+        }
+      />
+      <Route path="/pelicula/:codigo" element={<Detalle />} />
+    </Routes>
   )
 }
 
